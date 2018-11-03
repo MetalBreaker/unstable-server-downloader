@@ -43,7 +43,13 @@ namespace UnstableServerDownloader
 
             // New web request
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Options.Url);
-
+            request.Headers.Add("USER_AGENT", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36");
+            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36";
+            request.Headers.Add("UPGRADE_INSECURE_REQUESTS", "1");
+            request.Headers.Add("CONNECTION", "keep-alive");
+            request.Headers.Add("ACCEPT_LANGUAGE", "en-US,en;q=0.9,sr;q=0.8,ru;q=0.7");
+            request.Headers.Add("ACCEPT_ENCODING", "gzip, deflate, br");
+            request.Headers.Add("ACCEPT", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8");
             // Variable setup, fetching response
             using (WebResponse response = request.GetResponse())
             {
